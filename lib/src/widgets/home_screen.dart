@@ -29,10 +29,10 @@ class _HomeScreenState extends State<HomeScreen>
 
   ListTile generateListTile(IconData icon, String label, int pageNumber) {
     return ListTile(
-      contentPadding: EdgeInsets.symmetric(vertical: 10).copyWith(left: 10),
+      contentPadding: EdgeInsets.symmetric(vertical: 10.0).copyWith(left: 10.0),
       leading: Icon(
         icon,
-        size: 50,
+        size: 50.0,
         color: iconColor,
       ),
       title: Text(label),
@@ -50,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: Drawer(
-        elevation: 10,
+        elevation: 10.0,
         child: ListView(
           children: <Widget>[
             AppBar(
@@ -71,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen>
       ),
       appBar: AppBar(
         backgroundColor: Colors.white.withOpacity(0),
-        elevation: 0,
+        elevation: 0.0,
         centerTitle: true,
         iconTheme: IconThemeData(color: Colors.blue[900]),
         title: Text(
