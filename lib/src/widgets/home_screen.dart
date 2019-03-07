@@ -70,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen>
         ),
       ),
       appBar: AppBar(
-        backgroundColor: Colors.white.withOpacity(0),
+        backgroundColor: Colors.white.withOpacity(0.0),
         elevation: 0.0,
         centerTitle: true,
         iconTheme: IconThemeData(color: Colors.blue[900]),
