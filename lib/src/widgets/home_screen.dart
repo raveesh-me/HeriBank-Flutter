@@ -77,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen>
                 FirebaseAuth.instance.signOut();
                 widget.googleSignIn.disconnect();
               },
-              icon: Icon(Icons.arrow_left),
+              icon: Icon(Icons.exit_to_app),
               label: Text('Sign Out'),
             ),
           ],

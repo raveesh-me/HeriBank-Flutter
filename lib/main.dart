@@ -41,13 +41,18 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.light().copyWith(),
-      home: user == null
-          ? LoginScreen(
-              login: loginWithGoogle,
-            )
-          : HomeScreen(
+      home: StreamBuilder(
+        stream: _auth.onAuthStateChanged,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return HomeScreen(
               googleSignIn: _googleSignIn,
-            ),
+            );
+          } else {
+            return LoginScreen(login: loginWithGoogle);
+          }
+        },
+      ),
     );
   }
 }
