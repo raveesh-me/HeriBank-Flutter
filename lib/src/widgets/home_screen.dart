@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:mobile_banking_system/src/widgets/balance_page.dart';
 import 'package:mobile_banking_system/src/widgets/statement_page.dart';
 import 'package:mobile_banking_system/src/widgets/support_page.dart';
@@ -7,6 +9,10 @@ import 'package:mobile_banking_system/src/widgets/transfer_funds_page.dart';
 var iconColor = Colors.blue[900];
 
 class HomeScreen extends StatefulWidget {
+  final GoogleSignIn googleSignIn;
+
+  const HomeScreen({Key key, this.googleSignIn}) : super(key: key);
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -66,6 +72,14 @@ class _HomeScreenState extends State<HomeScreen>
             generateListTile(Icons.compare_arrows, "TRANSFER FUNDS", 1),
             generateListTile(Icons.list, "STATEMENT", 2),
             generateListTile(Icons.contact_phone, "SUPPORT", 3),
+            FlatButton.icon(
+              onPressed: () {
+                FirebaseAuth.instance.signOut();
+                widget.googleSignIn.disconnect();
+              },
+              icon: Icon(Icons.arrow_left),
+              label: Text('Sign Out'),
+            ),
           ],
         ),
       ),

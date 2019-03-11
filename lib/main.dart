@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:mobile_banking_system/src/widgets/home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:mobile_banking_system/src/widgets/home_screen.dart';
 
 main() {
   runApp(MyApp());
@@ -29,9 +29,7 @@ class _MyAppState extends State<MyApp> {
 
     user = await _auth.signInWithCredential(credential);
     print("signed in " + user.displayName);
-    setState(() {
-
-    });
+    setState(() {});
   }
 
   @override
@@ -47,7 +45,9 @@ class _MyAppState extends State<MyApp> {
           ? LoginScreen(
               login: loginWithGoogle,
             )
-          : HomeScreen(),
+          : HomeScreen(
+              googleSignIn: _googleSignIn,
+            ),
     );
   }
 }
