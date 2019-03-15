@@ -28,6 +28,7 @@ class _MyAppState extends State<MyApp> {
     );
 
     user = await _auth.signInWithCredential(credential);
+
     print("signed in " + user.displayName);
     setState(() {});
   }
@@ -41,12 +42,13 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.light().copyWith(),
-      home: StreamBuilder(
+      home: StreamBuilder<FirebaseUser>(
         stream: _auth.onAuthStateChanged,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return HomeScreen(
               googleSignIn: _googleSignIn,
+              user: snapshot.data,
             );
           } else {
             return LoginScreen(login: loginWithGoogle);
