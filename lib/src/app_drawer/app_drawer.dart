@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:mobile_banking_system/src/widgets/selections_column.dart';
-import 'package:mobile_banking_system/src/widgets/support_box.dart';
-import 'package:mobile_banking_system/src/widgets/user_details_conatiner.dart';
+import 'package:mobile_banking_system/src/app_drawer/selections_column.dart';
+import 'package:mobile_banking_system/src/app_drawer/support_box.dart';
+import 'package:mobile_banking_system/src/app_drawer/user_details_conatiner.dart';
 
 class AppDrawer extends StatefulWidget {
   final FirebaseUser user;
