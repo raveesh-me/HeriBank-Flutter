@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-var iconColor = Colors.blue[900];
+var iconColor = Colors.white;
 
 class SelectionsColumn extends StatelessWidget {
   final TabController controller;
@@ -9,27 +9,41 @@ class SelectionsColumn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ListTile generateListTile(
-      IconData icon,
-      String label,
-      int pageNumber,
-    ) {
-      return ListTile(
-        contentPadding:
-            EdgeInsets.symmetric(vertical: 10.0).copyWith(left: 10.0),
-        leading: Icon(
-          icon,
-          size: 50.0,
-          color: iconColor,
+    Widget generateListTile(IconData icon, String label, int pageNumber) {
+      return Container(
+        decoration: BoxDecoration(
+          color: Colors.blue[600],
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black26,
+              blurRadius: 7,
+              spreadRadius: 2,
+            ),
+          ],
         ),
-        title: Text(label),
-        onTap: () {
-          controller.animateTo(
-            pageNumber,
-            duration: Duration(milliseconds: 100),
-          );
-          Navigator.pop(context, label);
-        },
+        margin: EdgeInsets.symmetric(vertical: 10),
+        child: ListTile(
+          contentPadding:
+              EdgeInsets.symmetric(vertical: 10.0).copyWith(left: 10.0),
+          leading: Icon(
+            icon,
+            size: 50.0,
+            color: iconColor,
+          ),
+          title: Text(
+            label,
+            style: TextStyle(
+              color: Colors.white,
+            ),
+          ),
+          onTap: () {
+            controller.animateTo(
+              pageNumber,
+              duration: Duration(milliseconds: 100),
+            );
+            Navigator.pop(context, label);
+          },
+        ),
       );
     }
 

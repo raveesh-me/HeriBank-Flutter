@@ -1,10 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:mobile_banking_system/src/widgets/app_drawer.dart';
 import 'package:mobile_banking_system/src/widgets/balance_page.dart';
-import 'package:mobile_banking_system/src/widgets/selections_column.dart';
 import 'package:mobile_banking_system/src/widgets/transfer_funds_page.dart';
-import 'package:mobile_banking_system/src/widgets/user_column.dart';
 
 class HomeScreen extends StatefulWidget {
   final GoogleSignIn googleSignIn;
@@ -41,35 +40,36 @@ class _HomeScreenState extends State<HomeScreen>
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        drawer: Drawer(
-          elevation: 10.0,
-          child: Column(
-            children: <Widget>[
-              UserDisplayColumn(
-                user: widget.user,
-              ),
-              SelectionsColumn(controller: tabController),
-            ],
-          ),
+        drawer: AppDrawer(
+          user: widget.user,
+          controller: tabController,
         ),
         appBar: AppBar(
-          backgroundColor: Colors.white.withOpacity(0.0),
           elevation: 0.0,
           centerTitle: true,
-          iconTheme: IconThemeData(color: Colors.blue[900]),
           title: Text(
             screenName,
-            style: TextStyle(color: Colors.black),
           ),
           actions: <Widget>[
-            FlatButton.icon(
-              onPressed: () {
-                widget.googleSignIn.disconnect();
-                FirebaseAuth.instance.signOut();
-                widget.googleSignIn.signOut();
-              },
-              icon: Icon(Icons.exit_to_app),
-              label: Text('Sign Out'),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: FlatButton.icon(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5),
+                ),
+                color: Colors.white,
+                onPressed: () {
+                  widget.googleSignIn.disconnect();
+                  FirebaseAuth.instance.signOut();
+                  widget.googleSignIn.signOut();
+                },
+                icon: Icon(
+                  Icons.exit_to_app,
+                ),
+                label: Text(
+                  'Sign Out',
+                ),
+              ),
             )
           ],
         ),

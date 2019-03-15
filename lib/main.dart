@@ -41,7 +41,9 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData.light().copyWith(),
+      theme: ThemeData.light().copyWith(
+        primaryColor: Colors.blue[600],
+      ),
       home: StreamBuilder<FirebaseUser>(
         stream: _auth.onAuthStateChanged,
         builder: (context, snapshot) {
