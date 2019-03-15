@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 const Color iconColor = Colors.white;
 const TextStyle supportBoxContentStyle = TextStyle(
   color: iconColor,
 );
+const String PHONE_NUMBER = '+91 8017348013';
+const String EMAIL_ADDRESS = 'masanta.ragini@gmail.com';
 
 class SupportBox extends StatelessWidget {
   @override
@@ -18,16 +21,17 @@ class SupportBox extends StatelessWidget {
         ),
         SizedBox(height: 5),
         InkWell(
-          onTap: () {
-            //TODO:Find a way to make a call
-            print('jj');
+          onTap: () async {
+            if (await canLaunch('tel:' + PHONE_NUMBER)) {
+              await launch('tel:' + PHONE_NUMBER);
+            }
           },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Icon(Icons.call, color: iconColor),
               Text(
-                ' 9000000001',
+                ' $PHONE_NUMBER',
                 style: supportBoxContentStyle,
               ),
             ],
@@ -35,15 +39,17 @@ class SupportBox extends StatelessWidget {
         ),
         SizedBox(height: 5),
         InkWell(
-          onTap: () {
-            //TODO:Find a way to mail
+          onTap: () async {
+            if (await canLaunch('mailto:' + PHONE_NUMBER)) {
+              await launch('mailto:' + PHONE_NUMBER);
+            }
           },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Icon(Icons.alternate_email, color: iconColor),
+              Icon(Icons.email, color: iconColor),
               Text(
-                ' email@email.com',
+                ' $EMAIL_ADDRESS',
                 style: supportBoxContentStyle,
               ),
             ],
