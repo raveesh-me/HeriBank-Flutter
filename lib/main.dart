@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:mobile_banking_system/src/widgets/home_screen.dart';
+import 'package:mobile_banking_system/src/routes/home_screen.dart';
 
 main() {
   runApp(MyApp());
@@ -28,6 +28,7 @@ class _MyAppState extends State<MyApp> {
     );
 
     user = await _auth.signInWithCredential(credential);
+
     print("signed in " + user.displayName);
     setState(() {});
   }
@@ -40,13 +41,16 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData.light().copyWith(),
-      home: StreamBuilder(
+      theme: ThemeData.light().copyWith(
+        primaryColor: Colors.blue[600],
+      ),
+      home: StreamBuilder<FirebaseUser>(
         stream: _auth.onAuthStateChanged,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return HomeScreen(
               googleSignIn: _googleSignIn,
+              user: snapshot.data,
             );
           } else {
             return LoginScreen(login: loginWithGoogle);
