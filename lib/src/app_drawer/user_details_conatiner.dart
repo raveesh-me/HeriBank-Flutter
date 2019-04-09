@@ -26,28 +26,22 @@ class UserDisplayContainer extends StatelessWidget {
             children: <Widget>[
               CircleAvatar(
                 backgroundImage: NetworkImage(user.photoUrl),
-                radius: width * 0.25,
+                radius: width * 0.18,
               ),
               Text(
                 user.displayName ?? '',
-                style: textTheme.display1,
+                style: textTheme.display1.copyWith(fontSize: 18, fontWeight: FontWeight.bold),
               ),
+
               Text(
                 user.email ?? '',
-                style: textTheme.caption,
+                style: textTheme.caption.copyWith(fontSize: 15),
               ),
               Text(
-                user.phoneNumber ?? '',
-                style: textTheme.caption,
+                'uid: ${user.uid}' ?? '',
+                style: textTheme.display3.copyWith(fontSize: 12),
               ),
-              Text(
-                "A/c no: 1234567890" ?? '',
-                style: textTheme.display3.copyWith(fontSize: 20),
-              ),
-              Text(
-                "IFSC Code: MMBA2019" ?? '',
-                style: textTheme.display3.copyWith(fontSize: 20),
-              ),
+              SizedBox(height: 10,)
             ],
           ),
         ),

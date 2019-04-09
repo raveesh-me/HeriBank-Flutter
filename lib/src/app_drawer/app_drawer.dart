@@ -25,24 +25,27 @@ class AppDrawerState extends State<AppDrawer> {
   Widget build(BuildContext context) {
     return Drawer(
       elevation: 10.0,
-      child: Container(
+      child: DecoratedBox(
         decoration: BoxDecoration(
-          color: Colors.blue[600],
+          color: Colors.blue[200],
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            UserDisplayContainer(
-              user: widget.user,
-            ),
             Expanded(
-              flex: 2,
-              child: SelectionsColumn(controller: widget.controller),
+              child: SingleChildScrollView(
+                physics: BouncingScrollPhysics(),
+                child: Column(
+                  children: <Widget>[
+                    UserDisplayContainer(
+                      user: widget.user,
+                    ),
+                    SelectionsColumn(controller: widget.controller),
+                  ],
+                ),
+              ),
             ),
-            Expanded(
-              flex: 1,
-              child: SupportBox(),
-            ),
+            SupportBox(),
           ],
         ),
       ),
