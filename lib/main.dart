@@ -37,6 +37,11 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
   }
+  @override
+  void dispose() {
+    _auth.signOut();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
