@@ -18,6 +18,9 @@ class _TransferFundsPageState extends State<TransferFundsPage> {
         Visibility(visible: token != null, child: Text('token: $token')),
         RaisedButton(
           onPressed: () async {
+            setState(() {
+              token = 'loading...';
+            });
             try {
               dynamic result = await CloudFunctions.instance.call(
                 functionName: 'generateToken',
@@ -28,7 +31,8 @@ class _TransferFundsPageState extends State<TransferFundsPage> {
               );
               print(result);
               setState(() {
-                token = result['data'];
+//                token = result['data'];
+                token = '$result';
               });
             } catch (error) {
               setState(() {
