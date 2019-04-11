@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:mobile_banking_system/src/blocs/current_balance_bloc.dart';
 
 class BalancePage extends StatefulWidget {
   @override
@@ -23,14 +23,12 @@ class _BalancePageState extends State<BalancePage> {
   Widget build(BuildContext context) {
     return user == null
         ? CircularProgressIndicator()
-        : StreamBuilder(
-            stream:
-                Firestore.instance.document('users/${user.uid}').snapshots(),
-            builder: (context, AsyncSnapshot snapshot) {
+        : StreamBuilder<int>(
+            stream: currentBalanceBlocSingleton.currentBalanceStream,
+            builder: (context, AsyncSnapshot<int> snapshot) {
               if (snapshot != null && snapshot.hasData) {
                 return Center(
-//                  child: Text('${snapshot.data.balance}'),
-                  child: Text('${snapshot.data['balance']}'),
+                  child: Text('${snapshot.data}'),
                 );
               } else {
                 return CircularProgressIndicator();
