@@ -26,7 +26,7 @@ class _TransferFundsPageState extends State<TransferFundsPage> {
                 functionName: 'generateToken',
                 parameters: {
                   "amount": 210,
-                  'secret_pin': '112233'
+                  'secret_pin': '102233'
                 },
               );
               print(result);
