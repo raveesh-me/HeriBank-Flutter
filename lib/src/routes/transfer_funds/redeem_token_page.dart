@@ -1,32 +1,46 @@
-import 'package:flutter/material.dart';
 import 'package:cloud_functions/cloud_functions.dart';
+import 'package:flutter/material.dart';
 
-class TransferFundsPage extends StatefulWidget {
+class RedeemTokenPage extends StatefulWidget {
   @override
-  _TransferFundsPageState createState() => _TransferFundsPageState();
+  _RedeemTokenPageState createState() => _RedeemTokenPageState();
 }
 
-class _TransferFundsPageState extends State<TransferFundsPage> {
+class _RedeemTokenPageState extends State<RedeemTokenPage> {
+  TextEditingController tokenController;
+
   String token;
 
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    tokenController = TextEditingController();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
+        TextField(
+          controller: tokenController,
+          decoration: InputDecoration(
+            labelText: 'Enter your token here',
+            border: OutlineInputBorder(),
+          ),
+          textCapitalization: TextCapitalization.characters,
+        ),
         Visibility(visible: token != null, child: Text('token: $token')),
         RaisedButton(
           onPressed: () async {
             setState(() {
-              token = 'loading...';
+              token = 'redeeming...';
             });
             try {
               dynamic result = await CloudFunctions.instance.call(
-                functionName: 'generateToken',
+                functionName: 'redeemToken',
                 parameters: {
-                  "amount": 210,
-                  'secret_pin': '102233'
+                  'token':tokenController.value.text,
                 },
               );
               print(result);

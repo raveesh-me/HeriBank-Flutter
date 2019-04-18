@@ -4,7 +4,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:mobile_banking_system/src/app_drawer/app_drawer.dart';
 import 'package:mobile_banking_system/src/blocs/current_balance_bloc.dart';
 import 'package:mobile_banking_system/src/routes/balance_page.dart';
-import 'package:mobile_banking_system/src/routes/transfer_funds_page.dart';
+import 'package:mobile_banking_system/src/routes/transfer_funds/transfer_funds_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class HomeScreen extends StatefulWidget {
