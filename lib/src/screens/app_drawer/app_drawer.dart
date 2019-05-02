@@ -1,8 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:mobile_banking_system/src/app_drawer/selections_column.dart';
-import 'package:mobile_banking_system/src/app_drawer/support_box.dart';
-import 'package:mobile_banking_system/src/app_drawer/user_details_conatiner.dart';
+import 'package:mobile_banking_system/src/current_balance_block.dart';
+import 'package:mobile_banking_system/src/screens/app_drawer/selections_column.dart';
+import 'package:mobile_banking_system/src/screens/app_drawer/support_box.dart';
+import 'package:mobile_banking_system/src/screens/app_drawer/user_details_conatiner.dart';
 
 class AppDrawer extends StatefulWidget {
   final FirebaseUser user;
@@ -27,7 +28,7 @@ class AppDrawerState extends State<AppDrawer> {
       elevation: 10.0,
       child: DecoratedBox(
         decoration: BoxDecoration(
-          color: Colors.blue[200],
+          color: Colors.blueGrey[900],
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -41,6 +42,7 @@ class AppDrawerState extends State<AppDrawer> {
                       user: widget.user,
                     ),
                     SelectionsColumn(controller: widget.controller),
+                    CurrentBalanceBlock.white(),
                   ],
                 ),
               ),

@@ -1,11 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:mobile_banking_system/src/app_drawer/app_drawer.dart';
 import 'package:mobile_banking_system/src/blocs/current_balance_bloc.dart';
-import 'package:mobile_banking_system/src/routes/balance_page.dart';
-import 'package:mobile_banking_system/src/routes/transfer_funds/transfer_funds_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:mobile_banking_system/src/screens/app_drawer/app_drawer.dart';
+import 'package:mobile_banking_system/src/screens/routes/balance_page.dart';
+import 'package:mobile_banking_system/src/screens/routes/transfer_funds/transfer_funds_page.dart';
 
 class HomeScreen extends StatefulWidget {
   final GoogleSignIn googleSignIn;

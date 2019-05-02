@@ -12,7 +12,7 @@ class SupportBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Colors.blue[400],
+      color: Colors.blueGrey[400],
       elevation: 50,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.end,

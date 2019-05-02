@@ -12,7 +12,7 @@ class SelectionsColumn extends StatelessWidget {
     Widget generateListTile(IconData icon, String label, int pageNumber) {
       return Container(
         decoration: BoxDecoration(
-          color: Colors.blue[600],
+          color: Colors.blueGrey,
           boxShadow: [
             BoxShadow(
               color: Colors.black26,

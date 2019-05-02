@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:cloud_functions/cloud_functions.dart';
-import 'package:mobile_banking_system/src/routes/transfer_funds/generate_token_page.dart';
-import 'package:mobile_banking_system/src/routes/transfer_funds/redeem_token_page.dart';
+import 'package:mobile_banking_system/src/screens/routes/transfer_funds/generate_token_page.dart';
+import 'package:mobile_banking_system/src/screens/routes/transfer_funds/redeem_token_page.dart';
 
 class TransferFundsPage extends StatefulWidget {
   @override
@@ -26,8 +25,14 @@ class _TransferFundsPageState extends State<TransferFundsPage>
         child: TabBar(
           controller: _tabController,
           tabs: [
-            Icon(Icons.flight_takeoff,color: Colors.blue,),
-            Icon(Icons.flight_land, color: Colors.blue,),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Icon(Icons.send, color: Colors.grey[300], size: 30, ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Icon(Icons.call_received, color: Colors.grey[300], size: 30,),
+            ),
           ],
         ), preferredSize: Size.fromHeight(kToolbarHeight),
       ),

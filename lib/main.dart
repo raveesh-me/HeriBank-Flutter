@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:mobile_banking_system/src/routes/home_screen.dart';
+import 'package:mobile_banking_system/src/screens/routes/home_screen.dart';
 
 main() {
   runApp(MyApp());
@@ -57,8 +57,10 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.light().copyWith(
-        primaryColor: Colors.blue[600],
-      ),
+          primaryColor: Colors.blueGrey[900],
+          accentColor: Colors.blueGrey[400],
+          tabBarTheme:
+              TabBarTheme(indicator: BoxDecoration(color: Colors.blueGrey))),
       home: StreamBuilder<FirebaseUser>(
         stream: _auth.onAuthStateChanged,
         builder: (context, snapshot) {
