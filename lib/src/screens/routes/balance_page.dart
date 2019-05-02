@@ -23,14 +23,14 @@ class _BalancePageState extends State<BalancePage> {
   @override
   Widget build(BuildContext context) {
     return user == null
-        ? CircularProgressIndicator()
+        ? LinearProgressIndicator()
         : StreamBuilder<QuerySnapshot>(
             stream: Firestore.instance
                 .collection("users/${user.uid}/transactions")
                 .snapshots(),
             builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
               if (!snapshot.hasData || snapshot.hasError) {
-                return CircularProgressIndicator();
+                return LinearProgressIndicator();
               }
 
               var documents = snapshot.data.documents;
